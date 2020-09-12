@@ -1,0 +1,41 @@
+* {
+    font-family: 'Courgette', cursive;
+    text-align: center;
+}
+
+body {
+    margin: 0px;    
+}
+
+#lock {
+    width: 40%;
+    max-width: 500px;
+    padding-top: 30px;
+}
+
+#code {
+    margin-bottom: 10px;
+}
+
+#navbar {
+    background-color: #DFE2CF;
+    margin: 0px;
+    padding: 7px;
+    height: 20px;
+}
+
+#navbar h3 {
+    margin: 0;
+    float: right;
+}
+
+#navbar a {
+    padding-left: 25px;
+    padding-right: 25px;
+    border-right: 2px black solid;
+    font-family: 'Bebas Neue', cursive;
+}
+
+#navbar a:last-of-type {
+    border-right: 0px;
+}
