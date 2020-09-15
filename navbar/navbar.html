@@ -1,13 +1,13 @@
-<div>
+<div style="font-family: 'Long Cang', cursive;">
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">Expand at md</a>
+      <a class="navbar-brand" href="../index.html" style="background-color: #80DFF8; padding: 5px; border-radius: 5px; border: 2px solid #00BEF0; border-color: {{$ctrl.logoClr}};" ><h3 style="color: black; float: left; padding-right: 5px;">The</h3><img src="../images/navbarMap.svg" alt="hunt map" height="40px" style="display: inline;"><h3 style="color: black; float: right; padding-left: 5px;">Hunt</h3></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
       <div class="collapse navbar-collapse" id="navbarsExample04">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
+        <ul class="navbar-nav mr-auto" style="font-size: 1.5em; color: blue;">
+          <li class="nav-item" ng-class=" {'active': $ctrl.isActive} ">
             <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
@@ -25,8 +25,8 @@
             </div>
           </li>
         </ul>
-        <form class="form-inline my-2 my-md-0">
-          <input class="form-control" type="text" placeholder="Search">
+        <form class="form-inline my-2 my-md-0 ng-hide">
+          <input class="form-control" type="text" placeholder="Search" style="font-size: 1.2em;">
         </form>
       </div>
     </nav>

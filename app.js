@@ -12,6 +12,9 @@ angular.module('app').component('navbar', navbar);
 // Home Controller with dependency injection using the array method
 angular.module('app').controller('NavbarController', ['ExampleService', function (ExampleService) {
     this.exampleVariable = 'I am the Navbar Component';
+    this.isActive = true;
+    this.logoClr = 'white'
+    console.log(this)
 }]);
 /*--------------------- Home Component ---------------------*/
 
