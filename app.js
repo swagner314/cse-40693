@@ -63,13 +63,25 @@ angular.module('app').component('puzzle1', puzzle1)
 angular.module('app').controller('Puzzle1Controller', ['GetData', function (GetData) {
     const $ctrl = this
     GetData.getData('./puzzle1/songs.json').then(function (result) {
-        console.log('result: ', result);
-        console.log('data: ', result.data);
-        $ctrl.songs = result.data.Thriller;
-        
+        $ctrl.songs = result.data.values;
     }, function (error){
         console.log(error);
     })
+}]);
+
+/*--------------------- Puzzle1song Component ---------------------*/
+const puzzle1song = {
+    templateUrl: './puzzle1/puzzle1-song.html',
+    controller: 'Puzzle1songController',
+    bindings: {
+        song: '<'
+    }
+}
+
+angular.module('app').component('puzzle1song', puzzle1song)
+
+angular.module('app').controller('Puzzle1songController', [function () {
+    this.over = false;
 }]);
 
 /*--------------------- Puzzle2 Component ---------------------*/
@@ -82,6 +94,7 @@ angular.module('app').component('puzzle2', puzzle2)
 
 angular.module('app').controller('Puzzle2Controller', ['GetData', function (GetData) {
     this.exampleVariable = '';
+
 }]);
 
 /*--------------------- GetData Service ---------------------*/

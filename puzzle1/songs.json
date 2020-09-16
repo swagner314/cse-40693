@@ -1,4 +1,16 @@
 {
-    "Thriller": ["Michael Jackson", 1982]
-    
+    "values": [
+        ["American Pie", "Don McLean", 1971],
+        ["Like a Rolling Stone", "Bob Dylan", 1965],
+        ["Paper Planes", "M.I.A.", 2007],
+        ["Hello", "Adele", 2015],
+        ["American Idiot", "Green Day", 2004],
+        ["Billie Jean", "Michael Jackson", 1982],
+        ["Eleanor Rigby", "The Beatles", 1966],
+        ["Take On Me", "A-ha", 1984],
+        ["I Heard It Through the Grapevine", "Marvin Gaye", 1968],
+        ["Changes", "David Bowie", 1971],
+        ["ABC", "The Jackson 5", 1970],
+        ["Lose Yourself", "Eminem", 2002]
+    ]
 }

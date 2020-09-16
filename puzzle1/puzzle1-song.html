@@ -1,0 +1,11 @@
+<div>
+    <div class="card shadow" style="width: 18rem; margin: 2em; text-align: center; font-family: monospace;" ng-mouseover="$ctrl.over = true" ng-mouseout="$ctrl.over = false" ng-class="{'shadow-lg': $ctrl.over}">
+        <div class="card-header" style="font-weight: bold">
+            {{ $ctrl.song[0] }}
+        </div>
+        <ul class="list-group">
+            <li class="list-group-item"> Artist: {{ $ctrl.song[1] }} </li>
+            <li class="list-group-item"> Year: {{ $ctrl.song[2] }} </li>
+        </ul>
+    </div>
+</div>
