@@ -93,8 +93,56 @@ const puzzle2 = {
 angular.module('app').component('puzzle2', puzzle2)
 
 angular.module('app').controller('Puzzle2Controller', ['GetData', function (GetData) {
-    this.exampleVariable = '';
+    const $ctrl = this
+    GetData.getData('./puzzle2/fruits.json').then(function (result) {
+        $ctrl.fruits = result.data.values;
+        console.log(JSON.stringify($ctrl.fruits))
+    }, function (error){
+        console.log(error);
+    })
+    
+    this.updateOrder = function (event) {
+        f = event.fruit
+        inc = event.isIncreasing
+        $ctrl.fruits.forEach(curFruit => {
+            if (curFruit[0] == f) {
+                console.log('same')
+                if (inc) {
+                    if (curFruit[1] != 1) {
+                        // decrease rank #
+                        // increase rank # of replacement
+                    }
+                }
+                else {
+                    if (curFruit[1] != $ctrl.fruits.length)
+                        console.log('decrease, length: ', $ctrl.fruits.length)
+                }
+            }
+        })
+    }
+}]);
 
+/*--------------------- Puzzle2fruit Component ---------------------*/
+const puzzle2fruit = {
+    templateUrl: './puzzle2/puzzle2-fruit.html',
+    controller: 'Puzzle2fruitController',
+    bindings: {
+        fruit: '<',
+        onUpdate: '&'
+    }
+}
+
+angular.module('app').component('puzzle2fruit', puzzle2fruit)
+
+angular.module('app').controller('Puzzle2fruitController', ['GetData', function (GetData) {
+    this.updateOrder = function (fruit, increasing) {
+        this.onUpdate({
+            $event: {
+                fruit: fruit,
+                isIncreasing: increasing
+            }
+        });
+    }
 }]);
 
 /*--------------------- GetData Service ---------------------*/
