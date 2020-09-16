@@ -8,13 +8,11 @@ const home = {
 
 angular.module('app').component('home', home);
 
-angular.module('app').controller('HomeController', ['GetData', '$scope', '$timeout', function (GetData, $scope, $timeout) {
-    $scope.currentTab = 'home';
-    $scope.$on("changedTab", function(event, newTab){
-        $timeout(function() {
-            $scope.currentTab = newTab;
-        })
-    });
+angular.module('app').controller('HomeController', [function () {
+    this.currentTab = 'home'
+    this.updateTab = function (event) {
+        this.currentTab = event.tab
+    }
 }]);
 
 /*--------------------- Welcome Component ---------------------*/
@@ -32,18 +30,25 @@ angular.module('app').controller('WelcomeController', ['GetData', function (GetD
 /*--------------------- Navbar Component ---------------------*/
 const navbar = {
     templateUrl: './navbar/navbar.html',
-    controller: 'NavbarController'
+    controller: 'NavbarController',
+    bindings: {
+        onUpdate: '&'
+    }
 }
 
 angular.module('app').component('navbar', navbar);
 
-angular.module('app').controller('NavbarController', ['$rootScope', function ($rootScope) {
+angular.module('app').controller('NavbarController', [function () {
     this.over = false;
     this.activeTab = 'home';
     
-    this.changeTab = function (str) {
-        $rootScope.$broadcast('changedTab', str);
-        this.activeTab = str;
+    this.updateTab = function (tab) {
+        this.activeTab = tab
+        this.onUpdate({
+            $event: {
+                tab: tab
+            }
+        });
     }
 }]);
 
@@ -56,7 +61,15 @@ const puzzle1 = {
 angular.module('app').component('puzzle1', puzzle1)
 
 angular.module('app').controller('Puzzle1Controller', ['GetData', function (GetData) {
-    this.exampleVariable = '';
+    const $ctrl = this
+    GetData.getData('./puzzle1/songs.json').then(function (result) {
+        console.log('result: ', result);
+        console.log('data: ', result.data);
+        $ctrl.songs = result.data.Thriller;
+        
+    }, function (error){
+        console.log(error);
+    })
 }]);
 
 /*--------------------- Puzzle2 Component ---------------------*/
@@ -75,10 +88,10 @@ angular.module('app').controller('Puzzle2Controller', ['GetData', function (GetD
 function GetData($http) {
     this.getData = getData;
     
-    function getData() {
+    function getData(file) {
         return $http({
             method: 'GET',
-            url: 'data.json'
+            url: file
         })
     }
 }

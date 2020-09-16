@@ -1,6 +1,7 @@
 <div>
-    <navbar></navbar>
-    <welcome ng-if="currentTab == 'home'"></welcome>
-    <puzzle1 ng-if="currentTab == 'puzzle1'" data="data"></puzzle1>
-    <puzzle2 ng-if="currentTab == 'puzzle2'" data="data" on-event="$ctrl.handlerFunction()"></puzzle2>
+    <navbar v="$ctrl.v" on-update="$ctrl.updateTab($event);"></navbar>
+    <welcome ng-if="$ctrl.currentTab == 'home'"></welcome>
+    <puzzle1 ng-if="$ctrl.currentTab == 'puzzle1'" data="data"></puzzle1>
+    <puzzle2 ng-if="$ctrl.currentTab == 'puzzle2'" data="data" on-event="$ctrl.handlerFunction()"></puzzle2>
+    {{ $ctrl.tab }}
 </div>
