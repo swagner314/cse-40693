@@ -11,7 +11,7 @@ angular.module('app').component('navbar', navbar);
 
 // Home Controller with dependency injection using the array method
 angular.module('app').controller('NavbarController', ['ExampleService', function (ExampleService) {
-    this.exampleVariable = 'I am the Navbar Component';
+    this.exampleVariable = 'Test String';
     this.isActive = true;
     this.logoClr = 'white'
     console.log(this)
@@ -36,10 +36,15 @@ angular.module('app').controller('SettingsController', SettingsController);
 /*--------------------- Settings Component ---------------------*/
 
 /*--------------------- Example Service ---------------------*/
-function ExampleService() {
-    // Services are Singletons
-    // Properties
-    // Methods
+function ExampleService($http) {
+    this.getData = getData;
+    
+    function getData() {
+        return $http({
+            method: 'GET',
+            url: 'data.json'
+        })
+    }
 }
 angular.module('app').service('ExampleService', ExampleService)
 /*--------------------- Example Service ---------------------*/
