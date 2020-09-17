@@ -1,12 +1,12 @@
 {
   "values": [
-    ["Watermelon", 1],
-    ["Kiwi", 2],
-    ["Papaya", 3],
-    ["Mango", 4],
-    ["Apple", 5],
-    ["Blueberry", 6],
-    ["Cherry", 7],
-    ["Banana", 8]
+    [1, "Watermelon"],
+    [2, "Kiwi"],
+    [3, "Papaya"],
+    [4, "Mango"],
+    [5, "Apple"],
+    [6, "Blueberry"],
+    [7, "Cherry"],
+    [8, "Banana"]
   ]
 }
