@@ -1,0 +1,60 @@
+{
+  "name": "hunt-app",
+  "version": "0.3.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "start": "gulp production && node ./backend/index.js",
+    "dev": "PORT=1337 node ./backend/index.js",
+    "test": "./node_modules/.bin/cypress run",
+    "deploy": "gulp production",
+    "cypress:open": "./node_modules/.bin/cypress open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/swagner314/cse-40693.git"
+  },
+  "author": "Michael Wicks",
+  "license": "UNLICENSED",
+  "private": "true",
+  "bugs": {
+    "url": "https://github.com/michaelwicks/proto-stack-starter-angularjs/issues"
+  },
+  "homepage": "https://github.com/michaelwicks/proto-stack-starter-angularjs#readme",
+  "dependencies": {
+    "@fintechstudios/angularjs-mdc": "^0.5.2",
+    "@material/card": "^0.38.0",
+    "@uirouter/angularjs": "^1.0.22",
+    "@uirouter/visualizer": "^4.0.0",
+    "angular-parse": "^0.2.2",
+    "moment": "^2.18.1",
+    "ngVue": "^1.6.0",
+    "parse": "^1.11.1",
+    "promise-limit": "^2.7.0",
+    "vue": "^2.5.17"
+  },
+  "devDependencies": {
+    "angular-material-expansion-panel": "^0.7.2",
+    "browser-sync": "^2.14.0",
+    "cypress": "^3.0.2",
+    "del": "^2.2.1",
+    "gulp": "^4.0.2",
+    "gulp-angular-templatecache": "^2.0.0",
+    "gulp-clean-css": "^2.0.6",
+    "gulp-concat": "^2.6.0",
+    "gulp-connect": "^5.0.0",
+    "gulp-htmlmin": "^2.0.0",
+    "gulp-if": "^2.0.1",
+    "gulp-ng-annotate": "^2.0.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-replace": "^0.5.4",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-strip-debug": "^1.1.0",
+    "gulp-uglify": "^2.0.0",
+    "gulp-wrap": "^0.13.0",
+    "path": "^0.12.7",
+    "yargs": "^5.0.0"
+  }
+}
