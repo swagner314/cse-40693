@@ -33,7 +33,7 @@ var argv = yargs.argv,
     'angular-parse/angular-parse.js',
     '@fintechstudios/angularjs-mdc/dist/angularjs-mdc.min.js',
     'angular-material-expansion-panel/dist/md-expansion-panel.js',
-    'vue/dist/vue.js', 'ngVue/build/index.js'
+    'vue/dist/vue.js', 'ngVue/build/index.js', '@uirouter/visualizer/bundles/visualizer.min.js'
   ]; // these are 3rd party libraries in the node_modules folder NOT *.module.js files
 
 /* utility function to generate Unix DateTime Stamp */
@@ -193,7 +193,7 @@ gulp.task('connect-app', () => {
         root: dist,
         livereload: false,
         fallback: 'dist/index.html',
-        host: '0.0.0.0',
+        //host: '0.0.0.0',
         port: 8885
     });
 });
