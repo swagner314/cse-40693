@@ -6,4 +6,6 @@ const navbar = {
     }
 }
 
-angular.module('common.navbar').component('navbar', navbar);
+angular
+    .module('common.navbar')
+    .component('navbar', navbar)

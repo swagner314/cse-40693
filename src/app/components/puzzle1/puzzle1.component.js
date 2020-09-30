@@ -3,4 +3,13 @@ const puzzle1 = {
     controller: 'Puzzle1Controller'
 }
 
-angular.module('components.puzzle1').component('puzzle1', puzzle1)
+angular
+    .module('components.puzzle1')
+    .component('puzzle1', puzzle1)
+    .config(function($stateProvider){
+        $stateProvider
+            .state('puzzle1', {
+                url: '/puzzle1',
+                component: 'puzzle1'
+            });
+    });

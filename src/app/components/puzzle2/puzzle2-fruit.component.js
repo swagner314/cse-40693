@@ -7,4 +7,14 @@ const puzzle2fruit = {
     }
 }
 
-angular.module('components.puzzle2').component('puzzle2fruit', puzzle2fruit)
+angular
+    .module('components.puzzle2')
+    .component('puzzle2fruit', puzzle2fruit)
+    .config(function($stateProvider){
+        $stateProvider
+            .state('fruit', {
+                parent: 'puzzle2',
+                url: '/fruit',
+                component: 'puzzle2fruit'
+            });
+    });

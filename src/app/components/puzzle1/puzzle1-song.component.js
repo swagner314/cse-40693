@@ -6,4 +6,14 @@ const puzzle1song = {
     }
 }
 
-angular.module('components.puzzle1').component('puzzle1song', puzzle1song)
+angular
+    .module('components.puzzle1')
+    .component('puzzle1song', puzzle1song)
+    .config(function($stateProvider){
+        $stateProvider
+            .state('song', {
+                parent: 'puzzle1',
+                url: '/song',
+                component: 'puzzle1song'
+            });
+    });

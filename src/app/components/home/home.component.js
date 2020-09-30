@@ -6,13 +6,12 @@ const home = {
 angular
     .module('components.home')
     .component('home', home)
-    .config(function($stateProvider){
+    .config(function($stateProvider, $urlRouterProvider, $locationProvider){
+        $locationProvider.hashPrefix('');
         $stateProvider
             .state('home', {
-                url: '/home',
-                component: 'home',
-                //resolve: {
-                //    deals: function(DealModel)
-                //}
+                url: '/',
+                component: 'home'
             });
+        $urlRouterProvider.otherwise('/');
     });
