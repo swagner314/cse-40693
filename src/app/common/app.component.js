@@ -5,11 +5,11 @@ var app = {
 
 angular
     .module('common')
-    .component('app', app)
+    .component('app', app)/*
     .config(function($stateProvider){
         $stateProvider
             .state('app', {
                 url: '/app',
                 component: 'app'
             });
-    });
+    });*/

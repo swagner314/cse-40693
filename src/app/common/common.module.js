@@ -1,4 +1,5 @@
 angular
     .module('common', [
-        'common.navbar'
+        'common.navbar',
+        'ngParse'
     ]);
