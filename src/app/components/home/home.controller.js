@@ -6,4 +6,13 @@ function HomeController() {
     }
 }
 
-angular.module('components.home').controller('HomeController', HomeController)
+angular
+    .module('components.home')
+    .controller('HomeController', HomeController)
+    .config(function($stateProvider){
+        $stateProvider
+            .state('home', {
+                url: '/home',
+                component: 'home'
+            });
+    });

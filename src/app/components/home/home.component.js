@@ -3,4 +3,16 @@ const home = {
     controller: 'HomeController'
 }
 
-angular.module('components.home').component('home', home);
+angular
+    .module('components.home')
+    .component('home', home)
+    .config(function($stateProvider){
+        $stateProvider
+            .state('home', {
+                url: '/home',
+                component: 'home',
+                //resolve: {
+                //    deals: function(DealModel)
+                //}
+            });
+    });

@@ -193,7 +193,7 @@ gulp.task('connect-app', () => {
         root: dist,
         livereload: false,
         fallback: 'dist/index.html',
-        //host: '0.0.0.0',
+        host: '0.0.0.0',
         port: 8885
     });
 });
