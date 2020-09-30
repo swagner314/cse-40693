@@ -2,9 +2,8 @@ function Puzzle1Controller(GetData) {
     const $ctrl = this
     
     // read data from songs.json
-    GetData.getData('./songs.json').then(function (result) {
+    GetData.getData('songs.json').then(function (result) {
         $ctrl.songs = result.data.values;
-        console.log($ctrl.songs)
     }, function (error){
         console.log(error);
     })

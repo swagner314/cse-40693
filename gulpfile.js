@@ -176,8 +176,15 @@ gulp.task('copy-html', () => {
 // copy images
 gulp.task('copy-img', () => {
     return gulp
-        .src('src/img/**/*')
+        .src('src/images/**/*')
         .pipe(gulp.dest(dist + '/img'));
+});
+
+// copy json files
+gulp.task('copy-json', () => {
+    return gulp
+        .src('src/json/*')
+        .pipe(gulp.dest(dist + '/json'));
 });
 
 // copy fonts
@@ -204,10 +211,10 @@ gulp.task('connect-app', () => {
 //     });
 // });
 
-gulp.task('default', gulp.series('clean', 'scripts', 'styles', 'copy-html', 'copy-img', 'copy-fonts', 'connect-app', (done) => {
+gulp.task('default', gulp.series('clean', 'scripts', 'styles', 'copy-html', 'copy-img', 'copy-fonts', 'copy-json', 'connect-app', (done) => {
     done();
 }));
 
-gulp.task('production', gulp.series('clean', 'scripts', 'styles', 'copy-html', 'copy-img', 'copy-fonts', (done) => {
+gulp.task('production', gulp.series('clean', 'scripts', 'styles', 'copy-html', 'copy-img', 'copy-json', 'copy-fonts', (done) => {
     done();
 }));

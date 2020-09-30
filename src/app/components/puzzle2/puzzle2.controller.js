@@ -1,8 +1,8 @@
-function Puzzle2Controller() {
+function Puzzle2Controller(GetData) {
     const $ctrl = this
     
     // read data from fruits.json
-    GetData.getData('./puzzle2/fruits.json').then(function (result) {
+    GetData.getData('fruits.json').then(function (result) {
         $ctrl.fruits = result.data.values;
         console.log(JSON.stringify($ctrl.fruits))
     }, function (error){
@@ -11,12 +11,12 @@ function Puzzle2Controller() {
     
     // update the order of the fruits when an up or down arrow is clicked
     this.updateOrder = function (event) {
-        rank = event.fruit
-        inc = event.isIncreasing
+        var rank = event.fruit
+        var inc = event.isIncreasing
         
         for (var i = 0; i < $ctrl.fruits.length; i++) {
             // current array of [rank, fruit_name]
-            curFruit = $ctrl.fruits[i]
+            var curFruit = $ctrl.fruits[i]
             
             // if the passed in rank matches the current fruit's rank
             if (curFruit[0] == rank) {
@@ -25,7 +25,7 @@ function Puzzle2Controller() {
                     if (curFruit[0] != 1) {
                         // increase rank of replacement fruit
                         for (var j = 0; j < $ctrl.fruits.length; j++) {
-                            newFruit = $ctrl.fruits[j]
+                            var newFruit = $ctrl.fruits[j]
                             if (newFruit[0] == rank - 1) {
                                 $ctrl.fruits[j][0] = rank
                             }
@@ -41,7 +41,7 @@ function Puzzle2Controller() {
                     if (curFruit[0] != $ctrl.fruits.length) {
                         // decrease rank of replacement fruit
                         for (var j = 0; j < $ctrl.fruits.length; j++) {
-                            newFruit = $ctrl.fruits[j]
+                            var newFruit = $ctrl.fruits[j]
                             if (newFruit[0] == rank + 1) {
                                 $ctrl.fruits[j][0] = rank
                             }
