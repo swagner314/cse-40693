@@ -1,5 +1,6 @@
 angular
     .module('common', [
         'ui.router',
-        'ngParse'
+        'ngParse',
+        'common.navbar'
     ]);
