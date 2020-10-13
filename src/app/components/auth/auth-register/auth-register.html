@@ -1,7 +1,11 @@
 <div>
     <div>
         <!-- pass user data down, pass on-submit event up -->
-        <auth-form user="" button="Create Account" on-submit="">
+        <auth-form 
+            user="$ctrl.user" 
+            message="{{ $ctrl.error }}"
+            button="Create Account" 
+            on-submit="$ctrl.createUser($event);">
         </auth-form>
     </div>
     <div>
