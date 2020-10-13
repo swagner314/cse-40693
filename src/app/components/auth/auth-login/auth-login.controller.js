@@ -9,10 +9,10 @@ function LoginController() {
             email: '',
             password: ''
         }
+    }
 
-        $ctrl.loginUser = function (event) {
+    $ctrl.loginUser = function (event) {
 
-        }
     }
 }
 
