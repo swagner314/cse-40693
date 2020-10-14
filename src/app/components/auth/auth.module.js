@@ -1,12 +1,22 @@
-anuglar
+angular
     .module('components.auth', [
         'ui.router'
     ])
-    /* might not need to be here
-    .config(function($locationProvider, $mdThemingProvider, ParseProvider) {
-        var MY_PARSE_APP_ID = 'BCrUQVkk80pCdeImSXoKXL5ZCtyyEZwbN7mAb11f';
-        var MY_PARSE_JS_KEY = '4wPYRKbpTJeCdmFNaS31AiQZ8344aaYubk6Uo8VW';
-        ParseProvider.initialize(MY_PARSE_APP_ID, MY_PARSE_JS_KEY);
-        ParseProvider.serverURL = 'https://parseapi.back4app.com/';
-    })
-    */
+    .run(function ($transitions, $state, AuthService) {
+        // Redirect user to login if they are not authenticated and they are trying to access puzzle2
+        $transitions.onStart({
+            to: 'puzzle2'
+        }, function() {
+            if (!AuthService.isAuthenticated()) {
+                return $state.target('auth.login');
+            }
+        });
+        // Redirect user to puzzle2 if they are authenticated and they are tryin to access login/register
+        $transitions.onStart({
+          to: 'auth.*'
+        }, function () {
+          if (AuthService.isAuthenticated()) {
+            return $state.target('puzzle2');
+          }
+        });
+    });

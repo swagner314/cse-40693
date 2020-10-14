@@ -3,7 +3,7 @@ function AuthFormController() {
 
     $ctrl.$onInit = function() {
         // a flag for the form knowing if it's register or sign in page
-        $ctrl.isRegister = ($ctr.button === 'Create Account') ? true : false
+        $ctrl.isRegister = ($ctrl.button === 'Create Account') ? true : false
     }
 
     $ctrl.$onChanges = function(changes) {
@@ -13,6 +13,7 @@ function AuthFormController() {
     };
 
     $ctrl.submitForm = function() {
+        console.log("user: ", $ctrl.user);
         $ctrl.onSubmit({
             $event: {
                 user: $ctrl.user

@@ -4,7 +4,7 @@ var root = {
 
 angular
   .module('root')
-  .component('root', root)/*
+  .component('root', root)
     .config(function($stateProvider, $urlRouterProvider){
         $stateProvider
             .state('root', {
@@ -12,4 +12,4 @@ angular
                 component: 'root'
             });
         $urlRouterProvider.otherwise('/');
-    });*/
+    });

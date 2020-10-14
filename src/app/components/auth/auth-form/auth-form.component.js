@@ -1,12 +1,12 @@
 const authForm = {
+    templateUrl: './auth-form.html',
+    controller: 'AuthFormController',
     bindings: {
         user: '<',
         button: '@',
         message: '@',
         onSubmit: '&'
-    },
-    templateUrl: './auth-form',
-    controller: 'AuthFormController'
+    }
 }
 
 angular

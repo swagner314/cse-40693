@@ -1,18 +1,26 @@
-const { stripLastPathElement } = require("@uirouter/angularjs");
+//const { stripLastPathElement } = require("@uirouter/angularjs");
 
-function LoginController() {
+function LoginController(AuthService, $state, $scope) {
     const $ctrl = this;
 
     $ctrl.$onInit = function() {
-        ctrl.user = {
-            name: '',
+        $ctrl.user = {
             email: '',
             password: ''
         }
     }
 
-    $ctrl.loginUser = function (event) {
-
+    $ctrl.validateUser = function (event) {
+        event = event['user'];
+        AuthService.login(event)
+            .then(success => {
+                $ctrl.error = "";
+                $state.go('puzzle2')
+            })
+            .catch(error => {
+                $ctrl.error = "Invalid username or password";
+                $scope.$apply();
+            });
     }
 }
 

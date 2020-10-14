@@ -3,4 +3,4 @@ function init($uiRouter) {
     var pluginInstance = $uiRouter.plugin(Visualizer);
 }
 
-angular.module('common').run(init)
+angular.module('common').run(init);
