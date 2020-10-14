@@ -1,0 +1,34 @@
+<div class="row">
+    <div class="col-3"></div>
+    <div class="col">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="card mb-3" style="background-color: #ffd6bf; margin: auto;">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm">
+                                    {{ $ctrl.fruit[0] }}
+                                </div>
+                                <div class="col-sm">
+                                    <b>{{ $ctrl.fruit[1] }}</b>
+                                </div>
+                                <div class="col-sm">
+                                    <div class="container">
+                                        <div class="row">
+                                            <a href="" ng-click="$ctrl.updateOrder($ctrl.fruit[0], true);"><img src="../img/up_arrow.png" style="width: 30px;"/></a>
+                                        </div>
+                                        <div class="row">
+                                            <a href="" ng-click="$ctrl.updateOrder($ctrl.fruit[0], false);"><img src="../img/down_arrow.png" style="width: 30px;"/></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-3"></div>
+</div>

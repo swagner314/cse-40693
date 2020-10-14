@@ -1,0 +1,39 @@
+<navbar></navbar>
+<div style="font-family: 'Long Cang', cursive; text-align: center; padding-top: 1em; font-size: 2em; font-weight: bold; text-shadow: 2px 2px #00BEF0">
+    <h1>You must log in first</h1>
+    <form name="authForm" novalidate ng-submit="$ctrl.submitForm();">
+        <input 
+            required="required"
+            type="text" 
+            name="username" 
+            placeholder="Enter your username"
+            ng-model="$ctrl.user.username" 
+        />
+
+        <input 
+            ng-if="$ctrl.isRegister" 
+            required="required"
+            type="email" 
+            name="email" 
+            placeholder="Enter your email"
+            ng-model="$ctrl.user.email" 
+        />
+
+        <input 
+            required="required"
+            type="password" 
+            name="password" 
+            placeholder="Enter your password"
+            ng-model="$ctrl.user.password" 
+        />
+
+        <div style="margin-top: 1em;">
+            <button ng-disabled="authForm.$invalid">
+                {{ $ctrl.button }}
+            </button>
+        </div>
+        <div ng-if="$ctrl.message">
+            {{ $ctrl.message }}
+        </div>
+    </form>
+</div>

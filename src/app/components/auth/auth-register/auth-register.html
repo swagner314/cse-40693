@@ -1,0 +1,17 @@
+<div>
+    <div>
+        <!-- pass user data down, pass on-submit event up -->
+        <auth-form 
+            user="$ctrl.user" 
+            message="{{ $ctrl.error }}"
+            button="Create Account" 
+            on-submit="$ctrl.createUser($event);">
+        </auth-form>
+    </div>
+    <div style="font-family: 'Long Cang', cursive; text-align: center; padding-top: 1em; font-weight: bold; text-shadow: 2px 2px #00BEF0">
+        <!-- use ui-router "state ref" to route to register -->
+        <a ui-sref="auth.login" style = "text-shadow: none; font-size: 2em; text-color: #00BEF0">
+            Already have an account? Log in here.
+        </a>
+    </div>
+</div>
