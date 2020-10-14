@@ -1,0 +1,17 @@
+<div>
+    <div>
+        <!-- pass user data down, pass on-submit event up -->
+        <auth-form 
+            user="$ctrl.user" 
+            message="{{ $ctrl.error }}"
+            button="Create Account" 
+            on-submit="$ctrl.createUser($event);">
+        </auth-form>
+    </div>
+    <div>
+        <!-- use ui-router "state ref" to route to register -->
+        <a ui-sref="auth.login">
+            Already have an account? Log in here.
+        </a>
+    </div>
+</div>
