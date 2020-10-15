@@ -1,3 +1,4 @@
+// controller for the authorization form
 function AuthFormController() {
     const $ctrl = this;
 

@@ -1,3 +1,4 @@
+// component for signing up for an account
 const register = {
     templateUrl: './auth-register.html',
     controller: 'RegisterController'

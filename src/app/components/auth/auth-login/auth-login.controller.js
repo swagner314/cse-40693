@@ -1,5 +1,6 @@
 //const { stripLastPathElement } = require("@uirouter/angularjs");
 
+// controller for logging in to an account
 function LoginController(AuthService, $state, $scope) {
     const $ctrl = this;
 

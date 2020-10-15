@@ -1,7 +1,9 @@
 <navbar></navbar>
+
 <div style="font-family: 'Long Cang', cursive; text-align: center; padding-top: 1em; font-size: 2em; font-weight: bold; text-shadow: 2px 2px #00BEF0">
     <h1>You must log in first</h1>
     <form name="authForm" novalidate ng-submit="$ctrl.submitForm();">
+        <!-- always require username -->
         <input 
             required="required"
             type="text" 
@@ -10,6 +12,7 @@
             ng-model="$ctrl.user.username" 
         />
 
+        <!-- require email if registering -->
         <input 
             ng-if="$ctrl.isRegister" 
             required="required"
@@ -19,6 +22,7 @@
             ng-model="$ctrl.user.email" 
         />
 
+        <!-- always require password -->
         <input 
             required="required"
             type="password" 
@@ -27,6 +31,7 @@
             ng-model="$ctrl.user.password" 
         />
 
+        <!-- don't let people submit form unless the info is valid -->
         <div style="margin-top: 1em;">
             <button ng-disabled="authForm.$invalid">
                 {{ $ctrl.button }}
