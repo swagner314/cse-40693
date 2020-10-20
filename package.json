@@ -36,7 +36,7 @@
   "devDependencies": {
     "angular-material-expansion-panel": "^0.7.2",
     "browser-sync": "^2.14.0",
-    "cypress": "^3.0.2",
+    "cypress": "^3.8.3",
     "del": "^2.2.1",
     "gulp": "^4.0.2",
     "gulp-angular-templatecache": "^2.0.0",

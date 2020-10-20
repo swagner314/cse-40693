@@ -1,7 +1,7 @@
 <navbar></navbar>
 
 <div style="font-family: 'Long Cang', cursive; text-align: center; padding-top: 1em; font-size: 2em; font-weight: bold; text-shadow: 2px 2px #00BEF0">
-    <h1>You must log in first</h1>
+    <h1 id="form-title">{{ $ctrl.button }}</h1>
     <form name="authForm" novalidate ng-submit="$ctrl.submitForm();">
         <!-- always require username -->
         <input 
@@ -37,7 +37,7 @@
                 {{ $ctrl.button }}
             </button>
         </div>
-        <div ng-if="$ctrl.message">
+        <div ng-if="$ctrl.message" class="error-messages">
             {{ $ctrl.message }}
         </div>
     </form>

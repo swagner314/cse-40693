@@ -22,6 +22,7 @@ function LoginController(AuthService, $state, $scope) {
                 $ctrl.error = "Invalid username or password";
                 $scope.$apply();
             });
+        console.log()
     }
 }
 
