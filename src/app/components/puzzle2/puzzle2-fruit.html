@@ -4,7 +4,7 @@
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <div class="card mb-3" style="background-color: #ffd6bf; margin: auto;">
+                    <div class="card mb-3" style="background-color: #80DFF8; margin: auto;">
                         <div class="container">
                             <div class="row">
                                 <div class="col-sm">
@@ -16,10 +16,10 @@
                                 <div class="col-sm">
                                     <div class="container">
                                         <div class="row">
-                                            <a href="" ng-click="$ctrl.updateOrder($ctrl.fruit[0], true);"><img src="../img/up_arrow.png" style="width: 30px;"/></a>
+                                            <a href="" id="{{ $ctrl.fruit[1] }}-up" ng-click="$ctrl.updateOrder($ctrl.fruit[0], true);"><img src="../img/up_arrow.png" style="width: 30px;"/></a>
                                         </div>
                                         <div class="row">
-                                            <a href="" ng-click="$ctrl.updateOrder($ctrl.fruit[0], false);"><img src="../img/down_arrow.png" style="width: 30px;"/></a>
+                                            <a href="" id="{{ $ctrl.fruit[1] }}-down" ng-click="$ctrl.updateOrder($ctrl.fruit[0], false);"><img src="../img/down_arrow.png" style="width: 30px;"/></a>
                                         </div>
                                     </div>
                                 </div>

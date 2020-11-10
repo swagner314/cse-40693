@@ -2,4 +2,8 @@
 <div>
     <br>
     <puzzle2fruit ng-repeat="fruit in $ctrl.fruits | orderBy:fruit" fruit="fruit" on-update="$ctrl.updateOrder($event);"></puzzle2fruit>
+    <br>
+    <div style="display: flex; justify-content: center;">
+        <button id="submit2" ng-click="$ctrl.checkAnswer()" type="button" class="btn" style="border-color: #00BEF0;">Submit</button>
+    </div>
 </div>

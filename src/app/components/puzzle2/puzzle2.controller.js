@@ -1,13 +1,32 @@
-function Puzzle2Controller(GetData) {
+function Puzzle2Controller(GetData, SolutionsModel, $location) {
     const $ctrl = this
     
     // read data from fruits.json
     GetData.getData('fruits.json').then(function (result) {
         $ctrl.fruits = result.data.values;
-        console.log(JSON.stringify($ctrl.fruits))
+        //console.log(JSON.stringify($ctrl.fruits))
     }, function (error){
         console.log(error);
     })
+
+    this.checkAnswer = function () {
+        var sol = "";
+        for (var i = 0; i < $ctrl.fruits.length; i++) {
+            for (var j = 0; j < $ctrl.fruits.length; j++) {
+                if ($ctrl.fruits[j][0]-1 == i) {
+                    sol += $ctrl.fruits[j][1];
+                    break;
+                }
+            }
+        }
+        var successful = SolutionsModel.getSolution("fruit", sol)
+            .then(res => {
+                if (res) {
+                    console.log("YES!")
+                    $location.path('/snake');
+                }
+            })
+    }
     
     // update the order of the fruits when an up or down arrow is clicked
     this.updateOrder = function (event) {
