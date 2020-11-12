@@ -1,20 +1,9 @@
 describe('auth.login', () => {
-    /*before(() => {
-        // Login
-        cy.visit('localhost:8885/#/auth/login')
-        cy.get("[name=\"username\"]").type("test{enter}");
-        cy.get("[name=\"password\"]").type("test{enter}");
-    })*/
 
     beforeEach(() => {
         cy.visit('localhost:8885/#/puzzle2')
         cy.get("[name=\"username\"]").type("test{enter}");
         cy.get("[name=\"password\"]").type("test{enter}");
-        /*cy.log(cy.url());
-        if (cy.url() == 'http://localhost:8885/#/auth/login') {
-            cy.get("[name=\"username\"]").type("test{enter}");
-            cy.get("[name=\"password\"]").type("test{enter}");
-        }*/
     })
 
     it("Denies incorrect input", () => {

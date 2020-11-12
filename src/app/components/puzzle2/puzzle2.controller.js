@@ -9,6 +9,7 @@ function Puzzle2Controller(GetData, SolutionsModel, $location) {
         console.log(error);
     })
 
+    // Verifies if the puzzle is solved, and redirects the user if so
     this.checkAnswer = function () {
         var sol = "";
         for (var i = 0; i < $ctrl.fruits.length; i++) {
