@@ -6,5 +6,6 @@ angular
         'components.welcome',
         'components.auth',
         'components.snake',
+        'components.vision',
         'ui.router'
     ]);

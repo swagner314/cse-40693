@@ -24,17 +24,23 @@
   "dependencies": {
     "@fintechstudios/angularjs-mdc": "^0.5.2",
     "@material/card": "^0.38.0",
+    "@tensorflow/tfjs-node": "^2.7.0",
     "@uirouter/angularjs": "^1.0.22",
     "@uirouter/visualizer": "^4.0.0",
     "angular-parse": "^0.2.2",
+    "canvas": "^2.6.1",
+    "face-api.js": "^0.22.2",
+    "install": "^0.13.0",
     "moment": "^2.18.1",
     "ngVue": "^1.6.0",
     "parse": "^1.11.1",
     "promise-limit": "^2.7.0",
-    "vue": "^2.5.17"
+    "vue": "^2.5.17",
+    "webcam": "^3.2.1"
   },
   "devDependencies": {
     "angular-material-expansion-panel": "^0.7.2",
+    "babel-plugin-angularjs-annotate": "^0.10.0",
     "browser-sync": "^2.14.0",
     "cypress": "^3.8.3",
     "del": "^2.2.1",
