@@ -1,15 +1,14 @@
 function Puzzle2Controller(GetData, SolutionsModel, $location) {
     const $ctrl = this
     
-    // read data from fruits.json
     GetData.getData('fruits.json').then(function (result) {
         $ctrl.fruits = result.data.values;
-        //console.log(JSON.stringify($ctrl.fruits))
+        console.log($ctrl.fruits)
+
     }, function (error){
         console.log(error);
     })
 
-    // Verifies if the puzzle is solved, and redirects the user if so
     this.checkAnswer = function () {
         var sol = "";
         for (var i = 0; i < $ctrl.fruits.length; i++) {
@@ -20,7 +19,8 @@ function Puzzle2Controller(GetData, SolutionsModel, $location) {
                 }
             }
         }
-        var successful = SolutionsModel.getSolution("fruit", sol)
+        console.log(sol)
+        var successful = SolutionsModel.getSolution("fruit2", sol)
             .then(res => {
                 if (res) {
                     console.log("YES!")
@@ -28,22 +28,22 @@ function Puzzle2Controller(GetData, SolutionsModel, $location) {
                 }
             })
     }
+
+    this.sorterFunc = function (fruit) {
+        console.log(fruit)
+        return parseInt(fruit[0])
+    }
     
-    // update the order of the fruits when an up or down arrow is clicked
     this.updateOrder = function (event) {
-        var rank = event.fruit
+        var rank = parseInt(event.fruit)
         var inc = event.isIncreasing
         
         for (var i = 0; i < $ctrl.fruits.length; i++) {
-            // current array of [rank, fruit_name]
             var curFruit = $ctrl.fruits[i]
             
-            // if the passed in rank matches the current fruit's rank
             if (curFruit[0] == rank) {
-                // if we are moving the current fruit up on the fruit list
                 if (inc) {
                     if (curFruit[0] != 1) {
-                        // increase rank of replacement fruit
                         for (var j = 0; j < $ctrl.fruits.length; j++) {
                             var newFruit = $ctrl.fruits[j]
                             if (newFruit[0] == rank - 1) {
@@ -51,15 +51,12 @@ function Puzzle2Controller(GetData, SolutionsModel, $location) {
                             }
                         }
                         
-                        // decrease rank of clicked fruit
                         $ctrl.fruits[i][0] = rank - 1
                     }
                 }
                 
-                // if we are moving the current fruit down on the fruit list
                 else {
                     if (curFruit[0] != $ctrl.fruits.length) {
-                        // decrease rank of replacement fruit
                         for (var j = 0; j < $ctrl.fruits.length; j++) {
                             var newFruit = $ctrl.fruits[j]
                             if (newFruit[0] == rank + 1) {
@@ -67,12 +64,10 @@ function Puzzle2Controller(GetData, SolutionsModel, $location) {
                             }
                         }
                         
-                        // increase rank of clicked fruit
                         $ctrl.fruits[i][0] = rank + 1
                     }
                 }
                 
-                // break because we have already found and dealt with the matching fruit
                 break
             }
         }

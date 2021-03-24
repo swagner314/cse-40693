@@ -17,9 +17,9 @@ var gulp = require('gulp'),
     yargs = require('yargs'),
     path = require('path'),
     rename = require('gulp-rename'),
-    sass = require('gulp-sass');
+    sass = require('gulp-sass'),
     https = require('https'),
-    fs = require('fs')
+    fs = require('fs');
 
 const options = {
     key: fs.readFileSync('src/cert/key.pem'),
@@ -232,7 +232,6 @@ gulp.task('connect-app', () => {
         fallback: 'dist/index.html',
         host: '0.0.0.0',
         port: 443,
-        name: Hunt,
         https: {
             key: options.key,
             cert: options.cert

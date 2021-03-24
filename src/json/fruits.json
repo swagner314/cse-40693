@@ -7,6 +7,18 @@
     [5, "Apple"],
     [6, "Blueberry"],
     [7, "Cherry"],
-    [8, "Banana"]
+    [8, "Banana"],
+    [9, "Potato"],
+    [10, "Spinich"],
+    [11, "Lettuce"],
+    [12, "Jicama"],
+    [13, "Carrot"],
+    [14, "Asparagus"],
+    [15, "Broccoli"],
+    [16, "Pumpkin"],
+    [17, "Tomato"],
+    [18, "Pepper"],
+    [19, "Eggplant"],
+    [20, "Squash"]
   ]
 }

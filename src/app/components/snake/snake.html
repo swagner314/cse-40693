@@ -1,6 +1,7 @@
-<div ng-keydown="down($event)" tabindex="0" style="outline: none;">
+<div id='snek' ng-keydown="down($event)" tabindex="1" style="outline: none;" key-focus>
     <navbar></navbar>
     <div>
+        <div id="death">{{$ctrl.losingText1}}<br>{{$ctrl.losingText2}}<br><div id="death-inner">{{$ctrl.losingText3}}</div></div>
         <canvas id="snake-canvas" style="display: block; margin: 0 auto;"></canvas>
     </div>
 </div>
