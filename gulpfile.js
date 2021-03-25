@@ -3,7 +3,7 @@
 var gulp = require('gulp'),
     concat = require('gulp-concat'),
     sourcemaps = require('gulp-sourcemaps'),
-    uglify = require('gulp-uglify'),
+    uglify = require('gulp-uglify-es').default,
     ngAnnotate = require('gulp-ng-annotate'),
     cleanCSS = require('gulp-clean-css'),
     del = require('del'),
@@ -17,7 +17,16 @@ var gulp = require('gulp'),
     yargs = require('yargs'),
     path = require('path'),
     rename = require('gulp-rename'),
-    sass = require('gulp-sass');
+    sass = require('gulp-sass'),
+    https = require('https'),
+    fs = require('fs');
+
+const options = {
+    key: fs.readFileSync('src/cert/key.pem'),
+    cert: fs.readFileSync('src/cert/cert.pem')
+    //key: fs.readFileSync('src/cert/private.key'),
+    //cert: fs.readFileSync('src/cert/certificate.crt')
+}
 
 /* These definitions are unique to your file structure */
 var argv = yargs.argv,
@@ -114,9 +123,9 @@ gulp.task('modules', gulp.series('templates', () => {
         .src(modules.map(item => 'node_modules/' + item))
         .pipe(gulpif(argv.deploy, stripDebug()))
         .pipe(plumber())
-        .pipe(gulpif(!argv._.length, sourcemaps.init({
-            loadMaps: true
-        })))
+        //.pipe(gulpif(!argv._.length, sourcemaps.init({
+        //    loadMaps: true
+        //})))
         .pipe(concat(filename))
         .pipe(gulpif(argv.deploy, uglify()))
         .pipe(gulpif(!argv._.length, sourcemaps.write()))
@@ -146,9 +155,9 @@ gulp.task('scripts', gulp.series('modules', () => {
         .src(['src/app/**/*.module.js', scripts, './templates.js'])
         .pipe(gulpif(argv.deploy, stripDebug()))
         .pipe(plumber())
-        .pipe(gulpif(!argv._.length, sourcemaps.init({
-            loadMaps: true
-        })))
+        //.pipe(gulpif(!argv._.length, sourcemaps.init({
+        //    loadMaps: true
+        //})))
         .pipe(wrap('(function(angular){\n\'use strict\';\n<%= contents %>})(window.angular);'))
         .pipe(concat(filename))
         .pipe(ngAnnotate()) // this adds
@@ -187,11 +196,32 @@ gulp.task('copy-json', () => {
         .pipe(gulp.dest(dist + '/json'));
 });
 
+// copy js files
+gulp.task('copy-js', () => {
+    return gulp
+        .src('src/vision/*')
+        .pipe(gulp.dest(dist + '/js'));
+});
+
 // copy fonts
 gulp.task('copy-fonts', () => {
     return gulp
         .src(['src/fonts/*', '!app/fonts/*.css'])
         .pipe(gulp.dest(dist + '/fonts'));
+});
+
+// copy ssl certificate
+gulp.task('copy-ssl', () => {
+    return gulp
+        .src('src/ssl/**/*')
+        .pipe(gulp.dest(dist + '/.well-known/pki-validation/'));
+});
+
+// copy ssl certificate 2
+gulp.task('copy-ssl2', () => {
+    return gulp
+        .src('src/cert/**/*')
+        .pipe(gulp.dest(dist + '/cert'));
 });
 
 // generate localhost server for docs
@@ -201,8 +231,17 @@ gulp.task('connect-app', () => {
         livereload: false,
         fallback: 'dist/index.html',
         host: '0.0.0.0',
-        port: 8885
+        port: 443,
+        https: {
+            key: options.key,
+            cert: options.cert
+        }
     });
+    
+    /*https.createServer(options, (req, res) => {
+        res.writeHead(200);
+        res.end('hello world\n');
+    }).listen(80);*/
 });
 
 // gulp.task('watch', function() {
@@ -211,10 +250,10 @@ gulp.task('connect-app', () => {
 //     });
 // });
 
-gulp.task('default', gulp.series('clean', 'scripts', 'styles', 'copy-html', 'copy-img', 'copy-fonts', 'copy-json', 'connect-app', (done) => {
+gulp.task('default', gulp.series('clean', 'scripts', 'styles', 'copy-html', 'copy-img', 'copy-fonts', 'copy-json', 'copy-js', 'copy-ssl', 'copy-ssl2', 'connect-app', (done) => {
     done();
 }));
 
-gulp.task('production', gulp.series('clean', 'scripts', 'styles', 'copy-html', 'copy-img', 'copy-json', 'copy-fonts', (done) => {
+gulp.task('production', gulp.series('clean', 'scripts', 'styles', 'copy-html', 'copy-img', 'copy-json', 'copy-js', 'copy-fonts', 'copy-ssl', 'copy-ssl2', (done) => {
     done();
 }));

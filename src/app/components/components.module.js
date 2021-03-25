@@ -5,5 +5,7 @@ angular
         'components.puzzle2',
         'components.welcome',
         'components.auth',
+        'components.snake',
+        'components.vision',
         'ui.router'
     ]);

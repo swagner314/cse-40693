@@ -19,7 +19,7 @@ function LoginController(AuthService, $state, $scope) {
                 $state.go('puzzle2')
             })
             .catch(error => {
-                $ctrl.error = "Invalid username or password";
+                $ctrl.error = "Lol no";
                 $scope.$apply();
             });
         console.log()
