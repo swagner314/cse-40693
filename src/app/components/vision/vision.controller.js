@@ -1,4 +1,4 @@
-function VisionController($scope, SolutionsModel) {
+function VisionController($scope) {
     const $ctrl = this
 
     function getScreenshot(videoEl, scale) {
@@ -21,15 +21,26 @@ function VisionController($scope, SolutionsModel) {
     }
 
     function c() {
-        SolutionsModel.gv()
-        .then(res => {
-            console.log(res);
-            $scope.recog = res;
-        })
+        var query = new Parse.Query(Parse.Object.extend('Solutions'));
+        query.equalTo("Problem", 'v');
+        query.find()
+            .then(res => {
+                var a = document.createElement('a');
+                a.href = res[0].attributes.f._url;
+                a.download = "output.png";
+                a.click();
+            })
+            .catch(err => {
+                return "Sooo. I think you did it, but the server is derpy. Contact your local hunt admin for the next clue.";
+            })
+    }
+
+    function t() {
+        
     }
     
     $ctrl.$onInit = () => {
-        console.log(SolutionsModel);
+        t();
         /*var video = document.getElementById("videoElement");
         if(navigator.mediaDevices.getUserMedia) {
             navigator.mediaDevices.getUserMedia({video: true})
@@ -41,7 +52,7 @@ function VisionController($scope, SolutionsModel) {
             })
         }*/
         //faceapi.loadFaceRecognitionModel('../../js/')
-        this.recog = 0;
+        this.recog = "Recognized: 0/15";
         $scope.ch = {
             videoHeight: 600,
             videoWidth: 900
@@ -50,7 +61,7 @@ function VisionController($scope, SolutionsModel) {
             .then(faceapi.loadSsdMobilenetv1Model('../../js/')
                 .then( () => {
                     var first = true;
-                    setInterval( function(){
+                    $ctrl.l = setInterval( function(){
                         if (first)
                             first = false;
                         else
@@ -63,9 +74,10 @@ function VisionController($scope, SolutionsModel) {
                         this.input = document.getElementById("ss");
                         const detections = faceapi.detectAllFaces(this.input)//.withFaceLandmarks()
                             .then( (res) => {
-                                $scope.recog = res.length;
-                                if ($scope.recog >= 1) {
+                                $scope.recog = "Recognized: " + res.length + "/15";
+                                if (res.length >= 1) {
                                     c();
+                                    clearInterval($ctrl.l);
                                     return;
                                 }
                                 $scope.$apply();

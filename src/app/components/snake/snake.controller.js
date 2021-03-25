@@ -2,6 +2,7 @@ function SnakeController($scope, SolutionsModel) {
     const $ctrl = this
     
     $ctrl.$onInit = () => {
+        console.log(SolutionsModel);
         $ctrl.a = {0: "#ffffff", 1: "#138015", 2: "#cc3939", 3: "#014703", 4: "#000000"}
         $ctrl.b = false;
         $ctrl.c = 50;
@@ -31,7 +32,7 @@ function SnakeController($scope, SolutionsModel) {
     }
 
     function l() {
-        if ($ctrl.e.length + 1 >= 10) {
+        if ($ctrl.e.length + 1 >= 10.00 * 2.5 * 4 * 2) {
             SolutionsModel.gsc()
                 .then(res => {
                     $ctrl.l1 = res;
