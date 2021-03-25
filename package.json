@@ -30,6 +30,8 @@
     "angular-parse": "^0.2.2",
     "canvas": "^2.6.1",
     "face-api.js": "^0.22.2",
+    "gulp-javascript-obfuscator": "^1.1.6",
+    "gulp-uglify-es": "^2.0.0",
     "install": "^0.13.0",
     "moment": "^2.18.1",
     "ngVue": "^1.6.0",

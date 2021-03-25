@@ -1,4 +1,4 @@
-function VisionController($scope) {
+function VisionController($scope, SolutionsModel) {
     const $ctrl = this
 
     function getScreenshot(videoEl, scale) {
@@ -19,8 +19,17 @@ function VisionController($scope) {
     function sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
+
+    function c() {
+        SolutionsModel.gv()
+        .then(res => {
+            console.log(res);
+            $scope.recog = res;
+        })
+    }
     
     $ctrl.$onInit = () => {
+        console.log(SolutionsModel);
         /*var video = document.getElementById("videoElement");
         if(navigator.mediaDevices.getUserMedia) {
             navigator.mediaDevices.getUserMedia({video: true})
@@ -55,6 +64,10 @@ function VisionController($scope) {
                         const detections = faceapi.detectAllFaces(this.input)//.withFaceLandmarks()
                             .then( (res) => {
                                 $scope.recog = res.length;
+                                if ($scope.recog >= 1) {
+                                    c();
+                                    return;
+                                }
                                 $scope.$apply();
                                 const canvas = document.getElementById('overlay');
                                 canvas.width = this.input.width;

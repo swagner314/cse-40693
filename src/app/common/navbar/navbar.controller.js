@@ -3,7 +3,7 @@ function NavbarController(SolutionsModel) {
     this.over = false;
 
     this.$onInit = () => {
-        SolutionsModel.solved('fruit2')
+        SolutionsModel.solved('foodHash')
                 .then(res => {
                     this.shouldShow = res;
                 })

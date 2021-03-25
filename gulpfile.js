@@ -3,7 +3,7 @@
 var gulp = require('gulp'),
     concat = require('gulp-concat'),
     sourcemaps = require('gulp-sourcemaps'),
-    uglify = require('gulp-uglify'),
+    uglify = require('gulp-uglify-es').default,
     ngAnnotate = require('gulp-ng-annotate'),
     cleanCSS = require('gulp-clean-css'),
     del = require('del'),
@@ -123,9 +123,9 @@ gulp.task('modules', gulp.series('templates', () => {
         .src(modules.map(item => 'node_modules/' + item))
         .pipe(gulpif(argv.deploy, stripDebug()))
         .pipe(plumber())
-        .pipe(gulpif(!argv._.length, sourcemaps.init({
-            loadMaps: true
-        })))
+        //.pipe(gulpif(!argv._.length, sourcemaps.init({
+        //    loadMaps: true
+        //})))
         .pipe(concat(filename))
         .pipe(gulpif(argv.deploy, uglify()))
         .pipe(gulpif(!argv._.length, sourcemaps.write()))
@@ -155,9 +155,9 @@ gulp.task('scripts', gulp.series('modules', () => {
         .src(['src/app/**/*.module.js', scripts, './templates.js'])
         .pipe(gulpif(argv.deploy, stripDebug()))
         .pipe(plumber())
-        .pipe(gulpif(!argv._.length, sourcemaps.init({
-            loadMaps: true
-        })))
+        //.pipe(gulpif(!argv._.length, sourcemaps.init({
+        //    loadMaps: true
+        //})))
         .pipe(wrap('(function(angular){\n\'use strict\';\n<%= contents %>})(window.angular);'))
         .pipe(concat(filename))
         .pipe(ngAnnotate()) // this adds

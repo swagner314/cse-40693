@@ -9,18 +9,21 @@ function Puzzle2Controller(GetData, SolutionsModel, $location) {
         console.log(error);
     })
 
+    this.hashCode = function(s){
+        return s.split("").reduce(function(a,b){a=((a<<5)-a)+b.charCodeAt(0);return a&a},0);              
+    }
+
     this.checkAnswer = function () {
         var sol = "";
         for (var i = 0; i < $ctrl.fruits.length; i++) {
             for (var j = 0; j < $ctrl.fruits.length; j++) {
                 if ($ctrl.fruits[j][0]-1 == i) {
-                    sol += $ctrl.fruits[j][1];
+                    sol += $ctrl.fruits[j][1][2];
                     break;
                 }
             }
         }
-        console.log(sol)
-        var successful = SolutionsModel.getSolution("fruit2", sol)
+        var successful = SolutionsModel.getSolution("foodHash", this.hashCode(sol))
             .then(res => {
                 if (res) {
                     console.log("YES!")

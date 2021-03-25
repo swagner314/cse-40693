@@ -8,7 +8,7 @@ angular
             to: 'snake'
         }, function() {
             console.log(SolutionsModel.data)
-            return SolutionsModel.solved('fruit2')
+            return SolutionsModel.solved('foodHash')
                 .then(res => {
                         console.log(res);
                         if (!res)

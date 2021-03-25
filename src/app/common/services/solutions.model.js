@@ -6,29 +6,29 @@ class SolutionsModel {
             //'values'
         ];
         this.data = {};
+        this.l1 = "YOU DIED!";
+        this.l4 = "/200";
+        this.l2 = "Score: ";
+        this.l3 = "Space to restart";
     }
 
-    // Queries the database for the given problems solution, and returns whether or not it was correctly solved
     getSolution(problem, solution) {
         var query = new Parse.Query(Parse.Object.extend('Solutions'));
         query.equalTo("Problem", problem);
         return query.find()
             .then(res => {
-                // cache result so user only has to solve puzzle once
                 if (solution == res[0].attributes.Solution) {
                     this.data[problem] = true;
                     localStorage.setItem(problem, solution);
                     return true;
                 }
                 return false;
-                //return (solution == res[0].attributes.Solution);
             })
             .catch(err => {
                 return false;
             })
     }
 
-    // Utility method for determining if a user has unlocked a puzzle or pathway
     solved(problem) {
         return this.getSolution(problem, localStorage.getItem(problem))
             .then(res => {
@@ -40,9 +40,22 @@ class SolutionsModel {
             })
     }
 
-    getSnakeClue() {
+    gsc() {
         var query = new Parse.Query(Parse.Object.extend('Solutions'));
         query.equalTo("Problem", 'snake');
+        return query.find()
+            .then(res => {
+                console.log(res[0].attributes.Solution);
+                return res[0].attributes.Solution;
+            })
+            .catch(err => {
+                return "Sooo. I think you did it, but the server is derpy. Contact your local hunt admin for the next clue.";
+            })
+    }
+
+    gv() {
+        var query = new Parse.Query(Parse.Object.extend('Solutions'));
+        query.equalTo("Problem", 'v');
         return query.find()
             .then(res => {
                 console.log(res[0].attributes.Solution);
