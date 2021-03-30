@@ -19,7 +19,6 @@ var gulp = require('gulp'),
     rename = require('gulp-rename'),
     sass = require('gulp-sass'),
     https = require('https'),
-    steamApi = require('web-api-steam'),
     log = require('fancy-log'),
     request = require('request'),
     fs = require('fs');
