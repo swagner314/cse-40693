@@ -10,6 +10,10 @@ class SolutionsModel {
         this.l4 = "/175";
         this.l2 = "Score: ";
         this.l3 = "Space to restart";
+        this.l11 = "YOU DIED!";
+        this.l44 = "/200";
+        this.l22 = "Score: ";
+        this.l33 = "Space to restart";
     }
 
     getSolution(problem, solution) {
@@ -43,6 +47,19 @@ class SolutionsModel {
     gsc() {
         var query = new Parse.Query(Parse.Object.extend('Solutions'));
         query.equalTo("Problem", 'snake');
+        return query.find()
+            .then(res => {
+                console.log(res[0].attributes.Solution);
+                return res[0].attributes.Solution;
+            })
+            .catch(err => {
+                return "Sooo. I think you did it, but the server is derpy. Contact your local hunt admin for the next clue.";
+            })
+    }
+
+    gsc2() {
+        var query = new Parse.Query(Parse.Object.extend('Solutions'));
+        query.equalTo("Problem", 'snake2');
         return query.find()
             .then(res => {
                 console.log(res[0].attributes.Solution);
