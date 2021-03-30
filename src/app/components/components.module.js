@@ -7,5 +7,6 @@ angular
         'components.auth',
         'components.snake',
         'components.vision',
+        'components.portal',
         'ui.router'
     ]);

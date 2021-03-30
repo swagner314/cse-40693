@@ -29,6 +29,7 @@
     "@uirouter/visualizer": "^4.0.0",
     "angular-parse": "^0.2.2",
     "canvas": "^2.6.1",
+    "express": "^4.17.1",
     "face-api.js": "^0.22.2",
     "gulp-javascript-obfuscator": "^1.1.6",
     "gulp-uglify-es": "^2.0.0",
@@ -38,6 +39,7 @@
     "parse": "^1.11.1",
     "promise-limit": "^2.7.0",
     "vue": "^2.5.17",
+    "web-api-steam": "^1.0.8",
     "webcam": "^3.2.1"
   },
   "devDependencies": {

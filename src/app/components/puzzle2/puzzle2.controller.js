@@ -3,7 +3,7 @@ function Puzzle2Controller(GetData, SolutionsModel, $location) {
     
     GetData.getData('fruits.json').then(function (result) {
         $ctrl.fruits = result.data.values;
-        console.log($ctrl.fruits)
+        //console.log($ctrl.fruits)
 
     }, function (error){
         console.log(error);
@@ -18,7 +18,7 @@ function Puzzle2Controller(GetData, SolutionsModel, $location) {
         for (var i = 0; i < $ctrl.fruits.length; i++) {
             for (var j = 0; j < $ctrl.fruits.length; j++) {
                 if ($ctrl.fruits[j][0]-1 == i) {
-                    sol += $ctrl.fruits[j][1][2];
+                    sol += $ctrl.fruits[j][1];
                     break;
                 }
             }
@@ -26,14 +26,13 @@ function Puzzle2Controller(GetData, SolutionsModel, $location) {
         var successful = SolutionsModel.getSolution("foodHash", this.hashCode(sol))
             .then(res => {
                 if (res) {
-                    console.log("YES!")
                     $location.path('/snake');
                 }
             })
     }
 
     this.sorterFunc = function (fruit) {
-        console.log(fruit)
+        //console.log(fruit)
         return parseInt(fruit[0])
     }
     

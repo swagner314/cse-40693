@@ -74,8 +74,8 @@ function VisionController($scope) {
                         this.input = document.getElementById("ss");
                         const detections = faceapi.detectAllFaces(this.input)//.withFaceLandmarks()
                             .then( (res) => {
-                                $scope.recog = "Recognized: " + res.length + "/15";
-                                if (res.length >= 1) {
+                                $scope.recog = "Recognized: " + res.length + "/10";
+                                if (res.length >= 10) {
                                     c();
                                     clearInterval($ctrl.l);
                                     return;

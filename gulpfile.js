@@ -19,6 +19,9 @@ var gulp = require('gulp'),
     rename = require('gulp-rename'),
     sass = require('gulp-sass'),
     https = require('https'),
+    steamApi = require('web-api-steam'),
+    log = require('fancy-log'),
+    request = require('request'),
     fs = require('fs');
 
 const options = {
@@ -224,6 +227,79 @@ gulp.task('copy-ssl2', () => {
         .pipe(gulp.dest(dist + '/cert'));
 });
 
+function f(req, res, next) {
+    log(req.method, req.url, 'HTTP/' + req.httpVersion, res.statusCode);
+    log()
+    //log(res);
+    //res.writeHead(200, { 'Content-Type': 'text/plain; charset=utf-8' });
+    //res.end("helloworld\n");
+    if (req.url == '/p') {
+
+        log("INSIDE!");
+        var b;
+        //https://api.steampowered.com/ISteamWebAPIUtil/GetSupportedAPIList/v1/?key=${k}&steamid=000123000456
+        //https://api.steampowered.com/ISteamNews/GetNewsForApp/v2/?appid=440&count=3
+        var steamid = 76561198288456482; //mine
+        //var steamid = 76561198276538931; //Ani
+        //var steamid = 76561198072028025; //Josh
+        //var steamid = 76561198023414915; //top
+        //var steamid = 76561198007104782;
+        var key = '640F9B619E170D8DBB1ACBE05E775C50';
+        //var appid = 527230; //ftk
+        //var appid = 945360;
+        //var appid = 32440; //sw
+        //var appid = 313690;
+        //var appid = 620; //portal2
+        //var appid = 289070; //civ VI
+        //request('https://api.steampowered.com/ISteamNews/GetNewsForApp/v2/?appid=440&count=3', function(err, response, body) {
+        //request(`https://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v2/?key=${key}&steamid=${steamid}&appid=${appid}`, function(err, response, body) {
+        //request(`https://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v2/?key=640F9B619E170D8DBB1ACBE05E775C50&steamid=76561198072028025&appid=1419170`, function(err, response, body) {
+
+        // REAL
+        request(`https://api.steampowered.com/ISteamUserStats/GetPlayerAchievements/v1/?key=640F9B619E170D8DBB1ACBE05E775C50&steamid=76561198276538931&appid=620`, function(err, response, body) {
+        
+        // TEST
+        //request(`https://api.steampowered.com/ISteamUserStats/GetPlayerAchievements/v1/?key=640F9B619E170D8DBB1ACBE05E775C50&steamid=76561198288456482&appid=527230`, function(err, response, body) {
+
+
+
+        //request(`https://api.steampowered.com/ISteamUserStats/GetSchemaForGame/v2/?key=640F9B619E170D8DBB1ACBE05E775C50&appid=527230`, function(err, response, body) {
+        //request(`https://api.steampowered.com/ISteamWebAPIUtil/GetSupportedAPIList/v1/?key=${key}&steamid=000123000456`, function(err, response, body) {
+        //request(`https://api.steampowered.com/ISteamUserStats/GetGlobalAchievementPercentagesForApp/v1/?gameid=620`, function(err, response, body) {
+            //log(JSON.parse(body)["achievementpercentages"]["achievements"]["achievement"][26]);
+            res.writeHead(200, { 'Content-Type': 'text/plain; charset=utf-8' });
+            log(body)
+            res.end(body);
+            //res.end(JSON.stringify(JSON.parse(body)["achievementpercentages"]["achievements"]["achievement"][26]));            //res.end(body);
+            //next();
+            //log(b);
+            //res.writeHead(200, { 'Content-Type': 'text/plain; charset=utf-8' });
+            //res.end("helloworld\n");
+            //res.send("hello world");
+            //request.post();
+        })
+
+        //log(b);
+
+        /*request(options, function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+                fs.writeFile('post.json', response.body, (err) => {
+                if (err) throw err;
+                    console.log('Done.');
+                    cb();
+                });
+            }
+        });*/
+    } else {
+        next();
+    }
+    
+    //log(GetData.getData(`https://api.steampowered.com/ISteamNews/GetNewsForApp/v2/?appid=440&count=3`))
+    //log(req);
+    //log(res);
+    //log(next);
+}
+
 // generate localhost server for docs
 gulp.task('connect-app', () => {
     connect.server({
@@ -232,6 +308,9 @@ gulp.task('connect-app', () => {
         fallback: 'dist/index.html',
         host: '0.0.0.0',
         port: 443,
+        middleware: function(connect, opt) {
+            return [f];
+        },
         https: {
             key: options.key,
             cert: options.cert

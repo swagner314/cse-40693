@@ -32,12 +32,12 @@ function SnakeController($scope, SolutionsModel) {
     }
 
     function l() {
-        if ($ctrl.e.length + 1 >= 10.00 * 2.5 * 4 * 2) {
+        if ($ctrl.e.length + 1 >= 5*5*7) {
             SolutionsModel.gsc()
                 .then(res => {
                     $ctrl.l1 = res;
                 })
-            document.getElementById('dt').setAttribute("style", "text-align: center; margin: auto; margin-top: 20px; margin-bottom: 20px; border: 3px solid #00BEF0; border-radius: 8px; width: 400px; font-size: 50px; font-family: 'Long Cang', cursive; font-weight: bold; text-shadow: 2px 2px #00BEF0");
+            document.getElementById('dt').setAttribute("style", "text-align: center; margin: auto; margin-top: 20px; margin-bottom: 20px; border: 3px solid #00BEF0; border-radius: 8px; width: 1000px; font-size: 50px; font-family: 'Long Cang', cursive; font-weight: bold; text-shadow: 2px 2px #00BEF0");
             clearInterval($ctrl.loop);
             return;
         }

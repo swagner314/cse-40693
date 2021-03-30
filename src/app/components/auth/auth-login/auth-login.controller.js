@@ -19,10 +19,9 @@ function LoginController(AuthService, $state, $scope) {
                 $state.go('puzzle2')
             })
             .catch(error => {
-                $ctrl.error = "Lol no";
+                $ctrl.error = "Hint: Username-Not every groupme message is harmless. Password-Not every signoff is harmless";
                 $scope.$apply();
             });
-        console.log()
     }
 }
 

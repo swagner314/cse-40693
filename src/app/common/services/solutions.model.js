@@ -7,7 +7,7 @@ class SolutionsModel {
         ];
         this.data = {};
         this.l1 = "YOU DIED!";
-        this.l4 = "/200";
+        this.l4 = "/175";
         this.l2 = "Score: ";
         this.l3 = "Space to restart";
     }
@@ -56,6 +56,19 @@ class SolutionsModel {
     gv() {
         var query = new Parse.Query(Parse.Object.extend('Solutions'));
         query.equalTo("Problem", 'v');
+        return query.find()
+            .then(res => {
+                console.log(res[0].attributes.Solution);
+                return res[0].attributes.Solution;
+            })
+            .catch(err => {
+                return "Sooo. I think you did it, but the server is derpy. Contact your local hunt admin for the next clue.";
+            })
+    }
+
+    pl() {
+        var query = new Parse.Query(Parse.Object.extend('Solutions'));
+        query.equalTo("Problem", 'p');
         return query.find()
             .then(res => {
                 console.log(res[0].attributes.Solution);
