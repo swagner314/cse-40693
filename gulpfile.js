@@ -242,6 +242,7 @@ function f(req, res, next) {
         //var steamid = 76561198276538931; //Ani
         //var steamid = 76561198072028025; //Josh
         //var steamid = 76561198023414915; //top
+        //var steamid = 76561198245582282; //tressler
         //var steamid = 76561198007104782;
         var key = '640F9B619E170D8DBB1ACBE05E775C50';
         //var appid = 527230; //ftk
@@ -255,7 +256,7 @@ function f(req, res, next) {
         //request(`https://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v2/?key=640F9B619E170D8DBB1ACBE05E775C50&steamid=76561198072028025&appid=1419170`, function(err, response, body) {
 
         // REAL
-        request(`https://api.steampowered.com/ISteamUserStats/GetPlayerAchievements/v1/?key=640F9B619E170D8DBB1ACBE05E775C50&steamid=76561198276538931&appid=620`, function(err, response, body) {
+        request(`https://api.steampowered.com/ISteamUserStats/GetPlayerAchievements/v1/?key=640F9B619E170D8DBB1ACBE05E775C50&steamid=76561198245582282&appid=620`, function(err, response, body) {
         
         // TEST
         //request(`https://api.steampowered.com/ISteamUserStats/GetPlayerAchievements/v1/?key=640F9B619E170D8DBB1ACBE05E775C50&steamid=76561198288456482&appid=527230`, function(err, response, body) {
